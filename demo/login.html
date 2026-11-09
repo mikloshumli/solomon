@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in – demo</title>
+<!--
+  Demo page: it loads the theme's real CSS and JS (not a separate copy) and uses Redmine's own markup,
+  so the theme and the demo cannot drift apart; any change to the theme shows up here right away.
+  The color picker (gear icon), pills, badges and login animations come from theme.js.
+  The theme's @import url(/application.css) (Redmine's own stylesheet) is a 404 here;
+  mock-redmine-base.css stands in for it.
+-->
+<link rel="stylesheet" href="mock-redmine-base.css">
+<link rel="stylesheet" href="../themes/solomon/stylesheets/application.css">
+<script src="../themes/solomon/javascripts/theme.js"></script>
+</head>
+<body class="controller-account action-login">
+<div id="wrapper"><div id="wrapper2"><div id="wrapper3">
+  <div id="top-menu"></div>
+  <div id="header"></div>
+  <div id="main" class="nosidebar">
+    <div id="content">
+      <div id="login-form">
+        <form action="#" method="post" onsubmit="return false">
+          <label for="username">Login</label>
+          <input type="text" name="username" id="username" autocomplete="username">
+          <label for="password">Password <a class="lost_password" href="#">Lost password</a></label>
+          <input type="password" name="password" id="password" autocomplete="current-password">
+          <label for="autologin" class="inline"><input type="checkbox" name="autologin" id="autologin" value="1"> Stay logged in</label>
+          <input type="submit" name="login" value="Sign in »">
+        </form>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+<script>
+  // demo: the button resets after submitting (live, the page reloads)
+  document.querySelector('#login-form form').addEventListener('submit', function () {
+    var b = this.querySelector('input[type="submit"]');
+    setTimeout(function () { b.classList.remove('om-loading'); b.value = 'Sign in »'; }, 1800);
+  });
+</script>
+</body>
+</html>

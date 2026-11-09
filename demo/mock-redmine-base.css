@@ -1,0 +1,33 @@
+/* For the demo pages: a simple copy of the most important layout rules of Redmine's core CSS.
+   The demo pages load the theme's real CSS and JS with Redmine's markup; this file only supplies
+   what the @import-ed core application.css provides live (font, columns, floats). */
+html, body { margin: 0; padding: 0; }
+body { font-family: "Noto Sans", Inter, -apple-system, "Segoe UI", system-ui, sans-serif; font-size: 14px; line-height: 1.5; color: #333; }
+a { text-decoration: none; }
+img { border: 0; }
+#main { display: flow-root; }
+#content { float: left; width: 74%; box-sizing: border-box; }
+#sidebar { float: right; width: 24%; box-sizing: border-box; font-size: .9em; }
+#main.nosidebar #content { float: none; width: auto; }
+#top-menu ul { margin: 0; padding: 0; }
+#top-menu li { float: left; list-style: none; }
+#main-menu ul { margin: 0; padding: 0; }
+#main-menu li { float: left; list-style: none; }
+#quick-search { float: right; }
+.contextual { float: right; font-size: .9em; white-space: nowrap; }
+.splitcontent { display: flow-root; }
+.splitcontentleft { float: left; width: 49%; }
+.splitcontentright { float: right; width: 49%; }
+.attribute { display: flex; padding: 3px 0; }
+.attribute .label { width: 35%; flex: none; font-weight: bold; }
+.attribute .value { flex: 1; }
+div.issue .subject h3 { margin: 0; }
+div.issue img.gravatar { float: left; margin: 0 8px 0 0; }
+div.issue p.author { margin: 0 0 12px; }
+div.tabs { overflow: hidden; }
+h2, h3, h4 { margin-top: 0; }
+hr { margin: 12px 0; }
+.drdn { position: relative; display: inline-block; }
+.drdn-content { display: none; }
+.drdn.expanded .drdn-content { display: block; }
+.drdn-items a { display: block; }
