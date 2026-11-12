@@ -1,4 +1,4 @@
-/* Solomon v1.0.0 – Redmine 6 theme · GPL-2.0-or-later */
+/* Solomon v1.0.1 – Redmine 6 theme · GPL-2.0-or-later */
 /* Theme script: color picker (gear + aside), pills, badges and login animations. */
 (function () {
   // Language: from the Redmine <html lang=".."> attribute (hu = Hungarian, anything else = English)

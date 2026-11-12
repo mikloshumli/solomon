@@ -1,4 +1,4 @@
-/* Solomon v1.0.0 – Redmine 6 theme · GPL-2.0-or-later */
+/* Solomon v1.0.1 – Redmine 7 theme · GPL-2.0-or-later */
 /* Redmine - project management software
  * Copyright (C) 2006-  Jean-Philippe Lang
  *
@@ -44,10 +44,12 @@ a, a:link, a:visited { color: var(--om-c2); text-decoration: none; }
 a:hover, a:active { color: var(--om-c1); text-decoration: none; }
 
 /* ---------- Top bar ---------- */
+/* Redmine 7: <nav class="top-menu"> with the links on the left and the account dropdown (avatar) on the right */
 #top-menu {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: 4px 16px;
   margin: 0;
   padding: 0 28px;
@@ -56,14 +58,76 @@ a:hover, a:active { color: var(--om-c1); text-decoration: none; }
   color: rgba(255, 255, 255, .75);
   font-size: 12.5px;
 }
-#top-menu a { color: rgba(255, 255, 255, .88); font-weight: 500; margin-right: 0; }
-#top-menu a:hover { color: #fff; }
-#top-menu ul { margin: 0; padding: 0; }
-#top-menu li { display: inline-block; float: none; margin-right: 18px; list-style: none; }
-#top-menu #loggedas { order: 1; margin-left: auto; float: none; color: rgba(255, 255, 255, .75); }
-#top-menu #loggedas a { color: #fff; font-weight: 700; }
-#top-menu #account { order: 2; float: none; }
-#top-menu #account li { margin: 0 0 0 18px; }
+#top-menu .profile-menu { min-height: 0; }
+#top-menu .top-menu__links ul { margin: 0; padding: 0; }
+#top-menu .top-menu__links li { display: inline-block; float: none; margin: 0 18px 0 0; list-style: none; white-space: nowrap; }
+#top-menu .top-menu__links a, #top-menu .top-menu__links a:link, #top-menu .top-menu__links a:visited {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, .88);
+  font-weight: 500;
+}
+#top-menu .top-menu__links a:hover { background: transparent; color: #fff; }
+#top-menu .top-menu__links svg.icon-svg { stroke: currentColor; }
+/* not logged in: the account links (sign in, register) sit on the right */
+#top-menu #account.top-menu__links li { margin: 0 0 0 18px; }
+
+/* account dropdown: avatar trigger + white card (same look as the project jump dropdown) */
+#top-menu #account .dropdown-trigger {
+  gap: 4px;
+  padding: 3px 6px 3px 3px;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, .88);
+  transition: background .2s, color .2s;
+}
+#top-menu #account .dropdown-trigger:hover { border-radius: 999px; background: rgba(255, 255, 255, .16); color: #fff; }
+#top-menu #account .dropdown-trigger .icon-svg { stroke: currentColor; }
+#top-menu #account .dropdown-content {
+  box-sizing: border-box;
+  min-width: 220px;
+  margin-top: 8px;
+  padding: 10px;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--om-ink);
+  font-size: 14px;
+  box-shadow: 0 24px 60px color-mix(in srgb, var(--om-c2) 30%, transparent), 0 0 0 1px color-mix(in srgb, var(--om-c1) 12%, transparent);
+}
+#top-menu #account .dropdown-content .user-info { padding: 6px 12px 12px; color: var(--om-ink); }
+#top-menu #account .dropdown-content .user-info .user-name { display: block; font-weight: 700; }
+#top-menu #account .dropdown-content .user-info .user-login { display: block; color: var(--om-muted); font-size: .85rem; }
+#top-menu #account .dropdown-content .dropdown-divider { margin: 0 0 8px; border-top: 1px solid var(--om-line); }
+#top-menu #account .dropdown-content li { display: block; margin: 0; }
+#top-menu #account .dropdown-content a,
+#top-menu #account .dropdown-content a:link,
+#top-menu #account .dropdown-content a:visited {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--om-ink);
+  font-weight: 400;
+  text-decoration: none;
+}
+/* hover: strong background, white text (overrides Redmine's own hover color) */
+#top-menu #account .dropdown-content a:hover,
+#top-menu #account .dropdown-content a:focus {
+  background: linear-gradient(110deg, var(--om-c1), var(--om-c2)) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--om-c1) 35%, transparent);
+}
+#top-menu #account .dropdown-content a:hover .icon-svg { stroke: currentColor; }
+
+/* initials avatars (Redmine 7 shows them when Gravatar is off) */
+span[role="img"].avatar { background: linear-gradient(135deg, var(--om-c1), var(--om-c2)); color: #fff; font-weight: 700; }
 
 /* ---------- Header ---------- */
 #header {
@@ -152,6 +216,22 @@ a:hover, a:active { color: var(--om-c1); text-decoration: none; }
 #main-menu .menu-children { border: 0; border-radius: 12px; box-shadow: 0 18px 40px color-mix(in srgb, var(--om-c2) 25%, transparent); overflow: hidden; }
 #main-menu .menu-children li a { border-radius: 0; background: #fff; color: var(--om-ink); }
 #main-menu .menu-children li a:hover { background: var(--om-bg); color: var(--om-c2); }
+/* Redmine 7 draws the main menu as a separate light bar under the header and reserves room for it;
+   here the tabs stay inside the header, sitting on its bottom edge (the same look as on Redmine 6) */
+body.has-main-menu #header { padding-bottom: 0; }
+#header h1 { display: block; min-height: 0; padding: 2px 10px 1px 0; line-height: normal; }
+#header #quick-search { min-height: 0; }
+#header #quick-search form label { margin: 0; }
+#main-menu { right: auto; padding: 0; background: transparent; }
+#main-menu ul { display: flow-root; min-height: 0; }
+#main-menu li { display: block; margin: 0 6px 0 0; }
+#main-menu li:has(a#new-object) { padding: 0; }
+#main-menu li a { font-size: .93em; line-height: inherit; }
+#main-menu li a.selected, #main-menu li a.selected:hover { box-shadow: none; }
+#main-menu li a.new-object, #main-menu li a.new-object:hover { margin: 0; padding: 11px 18px; border: 0; border-radius: 12px 12px 0 0; color: #fff; }
+#main-menu li a.new-object:hover { background: rgba(255, 255, 255, .22); }
+#main-menu .menu-children li { margin: 0; }
+#main-menu .tabs-buttons button { color: #fff; }
 
 /* ---------- Content ---------- */
 #main { background: var(--om-bg); margin: 0; padding: 0; }
@@ -254,6 +334,9 @@ table.list tbody tr.context-menu-selection td.done_ratio table.progress td.close
 table.list tbody tr.context-menu-selection td.done_ratio table.progress td.done { background: #fff; }
 table.list tbody tr.context-menu-selection td.buttons a:hover { background: rgba(255, 255, 255, .22); }
 table.list td.subject, table.list td.name, table.list td.subject a { text-align: left; }
+/* Redmine 7 right-aligns the hour columns; the column headers here are left-aligned, so keep the cells under them */
+table.list td.estimated_hours, table.list td.total_estimated_hours, table.list td.estimated_remaining_hours,
+table.list td.spent_hours, table.list td.total_spent_hours { text-align: left; }
 table.list td.subject a { color: var(--om-ink); font-weight: 600; }
 table.list td.subject a:hover { color: var(--om-c1); }
 table.list td.project { color: var(--om-muted); }
@@ -1193,6 +1276,73 @@ div.journal .wiki { color: var(--om-ink); }
 #sidebar #watchers ul, #sidebar ul.watchers { margin: 6px 0 0; padding: 0; list-style: none; }
 #sidebar #watchers li, #sidebar ul.watchers li { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
 #sidebar h3 .contextual a, #sidebar .contextual a { font-size: .8rem; font-weight: 600; }
+
+/* Redmine 7 issue page: journal header/content markup, sticky issue header, reaction button, thumbnail wrapper */
+.journals h4.journal-header {
+  gap: 10px;
+  margin: 0 0 6px;
+  padding: 2px 0 1px;
+  border: 0;
+  background: transparent;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--om-ink);
+}
+.journals div:target h4.journal-header { background: transparent; }
+.journals .journal-meta, .journals .journal-actions { gap: 4px; align-items: center; color: var(--om-muted); font-size: 12.6px; font-weight: 400; white-space: nowrap; }
+.journals .journal-meta { margin: -4px 0; }
+.journals .journal-meta a, .journals .journal-meta a:link, .journals .journal-meta a:visited {
+  padding: 5px 10px;
+  border-radius: 9px;
+  color: var(--om-c2);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.journals .journal-meta a:hover { background: var(--om-soft); color: var(--om-c1); }
+.journals .journal-content { margin: 0; padding: 0; }
+.journals .journal .journal-content .wiki { margin-left: 0; }
+.journals .journal-details { margin: 6px 0 0; padding-left: 4px; list-style: none; color: var(--om-muted); }
+.journals .journal-details li { margin: 4px 0; }
+.journals .journal-details a { color: var(--om-c2); }
+.journals .journal-details a:hover { color: var(--om-c1); }
+.journals .private-notes { border-left: 0; }
+
+/* the bar that sticks to the top while the issue is scrolled (it has the .issue class, so it would get the card look) */
+#content div#sticky-issue-header {
+  margin: 0;
+  padding: 12px 28px;
+  border: 0;
+  border-bottom: 1px solid var(--om-line);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--om-card) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--om-c2) 12%, transparent);
+  color: var(--om-ink);
+  font-size: .9rem;
+}
+#content div#sticky-issue-header .issue-heading { color: var(--om-muted); font-weight: 600; }
+
+/* reaction (thumbs up) button */
+.reaction-button, a.reaction-button:link, a.reaction-button:visited {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 9px;
+  color: var(--om-c2);
+  font-weight: 600;
+  transition: background .2s, color .2s;
+}
+a.reaction-button:hover { background: var(--om-soft); color: var(--om-c1); }
+.reaction-button .icon-svg, a.reaction-button:hover .icon-svg { stroke: currentColor; }
+.reaction-button.readonly, .reaction-button.readonly .icon-label { color: var(--om-muted); }
+
+/* avatars are round (Gravatar images and initials) */
+.avatar, div.avatar-with-child > .avatar:nth-child(2) { border-radius: 50%; }
+
+/* thumbnails: the image keeps the framed look, the new wrapper stays invisible */
+div.thumbnails div.thumbnail { margin: 0 2px 0 0; padding: 0; border: 0; background: transparent; }
 
 
 /* ---------- Activity (My page block, activity list) ---------- */

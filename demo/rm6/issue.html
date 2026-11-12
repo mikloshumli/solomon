@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Issue details – demo</title>
+<!--
+  Demo page: it loads the theme's real CSS and JS (not a separate copy) and uses Redmine's own markup,
+  so the theme and the demo cannot drift apart; any change to the theme shows up here right away.
+  The color picker (gear icon), pills, badges and login animations come from theme.js.
+  The theme's @import url(/application.css) (Redmine's own stylesheet) is a 404 here;
+  mock-redmine-base.css stands in for it.
+-->
+<link rel="stylesheet" href="mock-redmine-base.css">
+<link rel="stylesheet" href="../../solomonRM6/stylesheets/application.css">
+<script src="../../solomonRM6/javascripts/theme.js"></script>
+</head>
+<body class="controller-issues action-show">
+<div id="wrapper"><div id="wrapper2"><div id="wrapper3">
+
+  <div id="top-menu">
+    <div id="account"><ul><li><a href="#">My account</a></li><li><a href="#">Sign out</a></li></ul></div>
+    <div id="loggedas">Logged in as <a href="#">lorem</a></div>
+    <ul><li><a href="#">Home</a></li><li><a href="#">My page</a></li><li><a href="#">Projects</a></li><li><a href="#">Administration</a></li><li><a href="#">Help</a></li></ul>
+  </div>
+
+  <div id="header">
+    <div id="quick-search"><form onsubmit="return false"><label for="q"><a href="#">Search:</a></label> <input id="q" type="text"> <div id="project-jump" class="drdn"><span class="drdn-trigger">Lorem Ipsum Ltd.</span><div class="drdn-content"><div class="quick-search"><input type="text" id="projects-quick-search"></div><div class="drdn-items projects selection"><a href="#">Lorem Ipsum Ltd.</a><a href="#" class="selected">Dolor Sit Foundation</a><a href="#">amet.hu</a><a href="#">consectetur.hu</a><a href="#">adipiscing-elit.hu</a><a href="#">eiusmod.hu</a><a href="#">tempor-incididunt.hu</a><a href="#">Ut Labore Association</a><a href="#">dolore-magna.hu</a><a href="#">Aliqua Enim</a><a href="#">minim-veniam.hu</a><a href="#">quis-nostrud.hu</a><a href="#">Exercitation Ullamco</a><a href="#">laboris-nisi.hu</a><a href="#">aliquip.hu</a><a href="#">commodo-consequat.hu</a><a href="#">Duis Aute LLC</a><a href="#">irure-dolor.hu</a><a href="#">reprehenderit.hu</a><a href="#">voluptate-velit.hu</a><a href="#">Esse Cillum Ltd.</a><a href="#">dolore-eu.hu</a><a href="#">fugiat-nulla.hu</a><a href="#">pariatur.hu</a><a href="#">Excepteur Sint</a><a href="#">occaecat.hu</a><a href="#">cupidatat-non.hu</a><a href="#">proident.hu</a><a href="#">Sunt In Culpa</a><a href="#">qui-officia.hu</a><a href="#">deserunt-mollit.hu</a><a href="#">anim-id-est.hu</a><a href="#">laborum.hu</a><a href="#">Sed Perspiciatis</a><a href="#">unde-omnis.hu</a><a href="#">iste-natus.hu</a><a href="#">error-sit.hu</a><a href="#">voluptatem.hu</a><a href="#">accusantium.hu</a><a href="#">doloremque.hu</a></div><div class="drdn-items all-projects"><a href="#">All projects</a></div></div></div></form></div>
+    <h1>Lorem Ipsum Ltd.</h1>
+    <div id="main-menu"><ul>
+      <li><a href="#">+</a></li><li><a href="#">Overview</a></li><li><a href="#">Activity</a></li><li><a class="selected" href="#">Issues</a></li>
+      <li><a href="#">Spent time</a></li><li><a href="#">Gantt</a></li><li><a href="#">Calendar</a></li><li><a href="#">News</a></li>
+      <li><a href="#">Documents</a></li><li><a href="#">Wiki</a></li><li><a href="#">Files</a></li><li><a href="#">Settings</a></li>
+    </ul></div>
+  </div>
+
+  <div id="main">
+    <div id="sidebar">
+      <h3>Custom queries</h3>
+      <ul class="menu"><li><a href="#">Issues assigned to me</a></li><li><a href="#">Reported issues</a></li><li><a href="#">Watched issues</a></li><li><a href="#">Updated issues</a></li></ul>
+      <div id="watchers">
+        <h3>Watchers (1) <span class="contextual"><a href="#">Add</a></span></h3>
+        <ul class="watchers"><li><a href="#">Lorem Ipsum</a></li></ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <div class="contextual"><a href="#">Edit</a><a href="#">Log time</a><a href="#">Unwatch</a><a href="#">Copy</a><a href="#">⋯</a></div>
+      <h2>Feature #119 <span class="badge badge-status-open">Open</span></h2>
+
+      <div class="issue tracker-2 status-3 priority-2 priority-default details">
+        <img class="gravatar" width="50" height="50" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50'><rect width='50' height='50' fill='%23b9b4d4'/><text x='25' y='32' font-size='20' text-anchor='middle' fill='white' font-family='sans-serif'>LI</text></svg>">
+        <div class="subject"><h3>Nulla pariatur est laborum</h3></div>
+        <p class="author"><a href="#">Lorem Ipsum</a> added <a href="#">4 months ago</a>. Last updated <a href="#">3 days ago</a>.</p>
+
+        <div class="attributes">
+          <div class="splitcontent">
+            <div class="splitcontentleft">
+              <div class="status attribute"><div class="label">Status:</div><div class="value">Billed</div></div>
+              <div class="priority attribute"><div class="label">Priority:</div><div class="value">Normal</div></div>
+              <div class="assigned-to attribute"><div class="label">Assignee:</div><div class="value"><a href="#">Lorem Ipsum</a></div></div>
+            </div>
+            <div class="splitcontentright">
+              <div class="start-date attribute"><div class="label">Start date:</div><div class="value">2026-07-06</div></div>
+              <div class="due-date attribute"><div class="label">Due date:</div><div class="value"></div></div>
+              <div class="progress attribute"><div class="label">% Done:</div><div class="value"><table class="progress" style="width:110px"><tr><td class="closed" style="width:100%"></td><td class="todo" style="width:0%"></td></tr></table><p class="percent">100%</p></div></div>
+              <div class="estimated-hours attribute"><div class="label">Estimated time:</div><div class="value">30:00 h</div></div>
+              <div class="spent-time attribute"><div class="label">Spent time:</div><div class="value"><a href="#">30:00 h</a></div></div>
+            </div>
+          </div>
+          <div class="splitcontent"><div class="splitcontentleft"><div class="cf_1 attribute"><div class="label">Price:</div><div class="value">7 500</div></div></div></div>
+        </div>
+
+        <hr>
+        <div class="description">
+          <div class="contextual"><a href="#">Comment / Quote</a></div>
+          <p><strong>Description</strong></p>
+          <div class="wiki">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>Duis aute irure dolor:<br>B1 - Lorem ipsum<br>B2 - Dolor sit amet, consectetur adipiscing<br>B3 - Sed do eiusmod tempor incididunt (ut labore et dolore)<br>B4 - Magna aliqua</p>
+          </div>
+        </div>
+
+        <hr>
+        <div class="attachments">
+          <p><strong>Files</strong></p>
+          <p><a href="#">2026.05.04.lorem-ipsum-dolor-sit.pdf</a> (117 KB) <span class="author">Lorem Ipsum, 2026-07-06 14:23</span></p>
+          <p><a href="#">67267e70-6655-4f7e-915f-281b22a27a43.pdf</a> (96.6 KB) <span class="author">Lorem Ipsum, 2026-11-06 12:25</span></p>
+          <div class="thumbnails">
+            <img class="thumbnail" width="80" height="110" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='110'><rect width='80' height='110' fill='white'/><g fill='%23d7d3e8'><rect x='10' y='14' width='60' height='4'/><rect x='10' y='26' width='50' height='4'/><rect x='10' y='38' width='60' height='4'/><rect x='10' y='50' width='40' height='4'/></g></svg>">
+            <img class="thumbnail" width="80" height="110" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='110'><rect width='80' height='110' fill='white'/><g fill='%23d7d3e8'><rect x='10' y='14' width='60' height='4'/><rect x='10' y='26' width='60' height='20'/><rect x='10' y='56' width='50' height='4'/></g></svg>">
+          </div>
+        </div>
+
+        <hr>
+        <div id="issue_tree"><div class="contextual"><a href="#">Add</a></div><p><strong>Subtasks</strong></p></div>
+        <hr>
+        <div id="relations"><div class="contextual"><a href="#">Add</a></div><p><strong>Related issues</strong></p></div>
+      </div>
+
+      <div id="history">
+        <div class="tabs"><ul>
+          <li><a class="selected" href="#">History</a></li><li><a href="#">Property changes</a></li><li><a href="#">Spent time</a></li>
+        </ul></div>
+        <div id="tab-content-history">
+          <div id="change-1" class="journal has-details">
+            <div class="contextual"><a href="#">⋯</a> <a href="#">#1</a></div>
+            <h4 class="note-header">Updated by <a href="#">Lorem Ipsum</a> <a href="#">3 days ago</a></h4>
+            <ul class="details"><li><strong>File</strong> <a href="#">67267e70-6655-4f7e-915f-281b22a27a43.pdf</a> added</li></ul>
+          </div>
+          <div id="change-2" class="journal has-notes">
+            <div class="contextual"><a href="#">⋯</a> <a href="#">#2</a></div>
+            <h4 class="note-header">Updated by <a href="#">Lorem Ipsum</a> <a href="#">2 days ago</a></h4>
+            <ul class="details"><li><strong>Status</strong> <i>In progress</i> instead of <i>Billed</i></li></ul>
+            <div class="wiki"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div></div></div>
+<script>
+  // open/close the Redmine .drdn dropdown (demo)
+  document.querySelector('.drdn-trigger').addEventListener('click', function () {
+    this.parentNode.classList.toggle('expanded');
+  });
+</script>
+</body>
+</html>

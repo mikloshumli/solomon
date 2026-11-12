@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My page – demo</title>
+<!--
+  Demo page: it loads the theme's real CSS and JS (not a separate copy) and uses Redmine's own markup,
+  so the theme and the demo cannot drift apart; any change to the theme shows up here right away.
+  The color picker (gear icon), pills, badges and login animations come from theme.js.
+  The theme's @import url(/application.css) (Redmine's own stylesheet) is a 404 here;
+  mock-redmine-base.css stands in for it.
+-->
+<link rel="stylesheet" href="mock-redmine-base.css">
+<link rel="stylesheet" href="../../solomonRM7/stylesheets/application.css">
+<script src="../../solomonRM7/javascripts/theme.js"></script>
+</head>
+<body class="controller-my action-page">
+<div id="wrapper"><div id="wrapper2"><div id="wrapper3">
+
+  <nav class="top-menu" id="top-menu">
+    <div class="general-menu">
+      <div class="top-menu__links"><ul><li><a class="home" href="#">Home</a></li><li><a class="my-page" href="#">My page</a></li><li><a class="projects" href="#">Projects</a></li><li><a class="administration" href="#">Administration</a></li><li><a class="help" href="#">Help</a></li></ul></div>
+    </div>
+    <div class="profile-menu">
+      <div id="account" class="dropdown" data-controller="dropdown">
+        <a href="#" class="dropdown-trigger"><span role="img" class="avatar-color-3 s22 avatar">LI</span><svg class="s14 icon-svg" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6l6 -6"/></svg></a>
+        <div class="dropdown-content hidden">
+          <div class="user-info"><span class="user-name">Lorem Ipsum</span> <span class="user-login">@lorem</span></div>
+          <div class="dropdown-divider"></div>
+          <ul><li><a class="my-account" href="#">My account</a></li><li><a class="logout" href="#">Sign out</a></li></ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="header">
+    <div id="quick-search"><form onsubmit="return false"><label for="q"><a href="#">Search:</a></label> <input id="q" type="text"> <div id="project-jump" class="drdn"><span class="drdn-trigger">Lorem Ipsum Ltd.</span><div class="drdn-content"><div class="quick-search"><input type="text" id="projects-quick-search"></div><div class="drdn-items projects selection"><a href="#">Lorem Ipsum Ltd.</a><a href="#" class="selected">Dolor Sit Foundation</a><a href="#">amet.hu</a><a href="#">consectetur.hu</a><a href="#">adipiscing-elit.hu</a><a href="#">eiusmod.hu</a><a href="#">tempor-incididunt.hu</a><a href="#">Ut Labore Association</a><a href="#">dolore-magna.hu</a><a href="#">Aliqua Enim</a><a href="#">minim-veniam.hu</a><a href="#">quis-nostrud.hu</a><a href="#">Exercitation Ullamco</a><a href="#">laboris-nisi.hu</a><a href="#">aliquip.hu</a><a href="#">commodo-consequat.hu</a><a href="#">Duis Aute LLC</a><a href="#">irure-dolor.hu</a><a href="#">reprehenderit.hu</a><a href="#">voluptate-velit.hu</a><a href="#">Esse Cillum Ltd.</a><a href="#">dolore-eu.hu</a><a href="#">fugiat-nulla.hu</a><a href="#">pariatur.hu</a><a href="#">Excepteur Sint</a><a href="#">occaecat.hu</a><a href="#">cupidatat-non.hu</a><a href="#">proident.hu</a><a href="#">Sunt In Culpa</a><a href="#">qui-officia.hu</a><a href="#">deserunt-mollit.hu</a><a href="#">anim-id-est.hu</a><a href="#">laborum.hu</a><a href="#">Sed Perspiciatis</a><a href="#">unde-omnis.hu</a><a href="#">iste-natus.hu</a><a href="#">error-sit.hu</a><a href="#">voluptatem.hu</a><a href="#">accusantium.hu</a><a href="#">doloremque.hu</a></div><div class="drdn-items all-projects"><a href="#">All projects</a></div></div></div></form></div>
+    <h1>Issue tracker | lorem-ipsum.hu</h1>
+    <div id="main-menu"><ul></ul></div>
+  </div>
+
+  <div id="main" class="nosidebar">
+    <div id="content">
+      <div class="contextual"><form onsubmit="return false"><label for="block-select">Add:</label> <select id="block-select"><option></option><option disabled>Lorem ipsum dolor sit</option><option disabled>Consectetur adipiscing</option><option>Sed do eiusmod</option><option>Tempor incididunt</option><option>Ut labore et dolore</option><option>Magna aliqua</option><option>Ut enim ad minim</option><option>Veniam quis nostrud</option><option>Exercitation ullamco</option><option>Laboris nisi ut aliquip</option></select></form></div>
+      <h2>My page</h2>
+
+      <div id="list-top">
+        <div class="mypage-box"><h3><a href="#">Issues assigned to me</a> (9)</h3>
+          <div class="autoscroll"><table class="list issues odd-even sort-by-priority sort-desc"><thead><tr><th class="id"><a class="sort" href="#">#</a></th><th class="project"><a class="sort" href="#">Project</a></th><th class="priority sort desc"><a class="sort desc" href="#">Priority</a></th><th class="subject"><a class="sort" href="#">Subject</a></th><th class="status"><a class="sort" href="#">Status</a></th><th class="done_ratio"><a class="sort" href="#">% Done</a></th><th class="spent_hours"><a class="sort" href="#">Spent time</a></th><th></th></tr></thead><tbody><tr id="issue-122" class="hascontextmenu issue priority-5 priority-highest"><td class="id"><a href="#">122</a></td><td class="project"><a href="#">Lorem Ipsum Ltd.</a></td><td class="priority">Immediate</td><td class="subject"><a href="#">Lorem ipsum dolor sit amet</a></td><td class="status">In progress</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">0:00</td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-120" class="hascontextmenu issue priority-4 priority-high"><td class="id"><a href="#">120</a></td><td class="project"><a href="#">Lorem Ipsum Ltd.</a></td><td class="priority">High</td><td class="subject"><a href="#">Consectetur adipiscing elit</a></td><td class="status">In progress</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">0:00</td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-115" class="hascontextmenu issue priority-3 priority-default"><td class="id"><a href="#">115</a></td><td class="project"><a href="#">Dolor Sit Foundation</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Sed do eiusmod tempor incididunt</a></td><td class="status">Assigned and waiting</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">0:00</td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-118" class="hascontextmenu issue priority-3 priority-default closed"><td class="id"><a href="#">118</a></td><td class="project"><a href="#">amet.hu</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Ut labore et dolore magna</a></td><td class="status">Done, waiting</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">1:00</td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-117" class="hascontextmenu issue priority-3 priority-default closed"><td class="id"><a href="#">117</a></td><td class="project"><a href="#">consectetur.hu</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Quis nostrud exercitation</a></td><td class="status">Done, waiting</td><td class="done_ratio"><progress class="progress" max="100" value="100"></progress><p class="percent">100%</p></td><td class="spent_hours">1:00</td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-119" class="hascontextmenu issue priority-3 priority-default closed"><td class="id"><a href="#">119</a></td><td class="project"><a href="#">Lorem Ipsum Ltd.</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Nulla pariatur est laborum</a></td><td class="status">Billed</td><td class="done_ratio"><progress class="progress" max="100" value="100"></progress><p class="percent">100%</p></td><td class="spent_hours">30:00</td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-97" class="hascontextmenu issue priority-3 priority-default"><td class="id"><a href="#">97</a></td><td class="project"><a href="#">adipiscing.hu</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Ullamco laboris nisi ut aliquip</a></td><td class="status">In progress</td><td class="done_ratio"><progress class="progress" max="100" value="40"></progress><p class="percent">40%</p></td><td class="spent_hours">14:00</td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-116" class="hascontextmenu issue priority-3 priority-default closed"><td class="id"><a href="#">116</a></td><td class="project"><a href="#">eiusmod.hu</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Duis aute irure dolor</a></td><td class="status">Done, waiting</td><td class="done_ratio"><progress class="progress" max="100" value="100"></progress><p class="percent">100%</p></td><td class="spent_hours">1:00</td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-98" class="hascontextmenu issue priority-2 priority-lowest"><td class="id"><a href="#">98</a></td><td class="project"><a href="#">tempor.hu</a></td><td class="priority">Low</td><td class="subject"><a href="#">Excepteur sint occaecat cupidatat</a></td><td class="status">Assigned and waiting</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">1:00</td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr></tbody></table></div>
+        </div>
+        <div class="mypage-box"><h3><a href="#">Reported issues</a> (9)</h3>
+          <div class="autoscroll"><table class="list issues odd-even sort-by-priority sort-desc"><thead><tr><th class="id"><a class="sort" href="#">#</a></th><th class="priority sort desc"><a class="sort desc" href="#">Priority</a></th><th class="subject"><a class="sort" href="#">Subject</a></th><th class="status"><a class="sort" href="#">Status</a></th><th class="done_ratio"><a class="sort" href="#">% Done</a></th><th class="spent_hours"><a class="sort" href="#">Spent time</a></th><th class="project"><a class="sort" href="#">Project</a></th><th></th></tr></thead><tbody><tr id="issue-122" class="hascontextmenu issue priority-5 priority-highest"><td class="id"><a href="#">122</a></td><td class="priority">Immediate</td><td class="subject"><a href="#">Lorem ipsum dolor sit amet</a></td><td class="status">In progress</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">0:00</td><td class="project"><a href="#">Lorem Ipsum Ltd.</a></td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-120" class="hascontextmenu issue priority-4 priority-high"><td class="id"><a href="#">120</a></td><td class="priority">High</td><td class="subject"><a href="#">Consectetur adipiscing elit</a></td><td class="status">In progress</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">0:00</td><td class="project"><a href="#">Lorem Ipsum Ltd.</a></td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-115" class="hascontextmenu issue priority-3 priority-default"><td class="id"><a href="#">115</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Sed do eiusmod tempor incididunt</a></td><td class="status">Assigned and waiting</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">0:00</td><td class="project"><a href="#">Dolor Sit Foundation</a></td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-118" class="hascontextmenu issue priority-3 priority-default closed"><td class="id"><a href="#">118</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Ut labore et dolore magna</a></td><td class="status">Done, waiting</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">1:00</td><td class="project"><a href="#">amet.hu</a></td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-117" class="hascontextmenu issue priority-3 priority-default closed"><td class="id"><a href="#">117</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Quis nostrud exercitation</a></td><td class="status">Done, waiting</td><td class="done_ratio"><progress class="progress" max="100" value="100"></progress><p class="percent">100%</p></td><td class="spent_hours">1:00</td><td class="project"><a href="#">consectetur.hu</a></td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-119" class="hascontextmenu issue priority-3 priority-default closed"><td class="id"><a href="#">119</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Nulla pariatur est laborum</a></td><td class="status">Billed</td><td class="done_ratio"><progress class="progress" max="100" value="100"></progress><p class="percent">100%</p></td><td class="spent_hours">30:00</td><td class="project"><a href="#">Lorem Ipsum Ltd.</a></td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-97" class="hascontextmenu issue priority-3 priority-default"><td class="id"><a href="#">97</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Ullamco laboris nisi ut aliquip</a></td><td class="status">In progress</td><td class="done_ratio"><progress class="progress" max="100" value="40"></progress><p class="percent">40%</p></td><td class="spent_hours">14:00</td><td class="project"><a href="#">adipiscing.hu</a></td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-116" class="hascontextmenu issue priority-3 priority-default closed"><td class="id"><a href="#">116</a></td><td class="priority">Normal</td><td class="subject"><a href="#">Duis aute irure dolor</a></td><td class="status">Done, waiting</td><td class="done_ratio"><progress class="progress" max="100" value="100"></progress><p class="percent">100%</p></td><td class="spent_hours">1:00</td><td class="project"><a href="#">eiusmod.hu</a></td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr><tr id="issue-98" class="hascontextmenu issue priority-2 priority-lowest"><td class="id"><a href="#">98</a></td><td class="priority">Low</td><td class="subject"><a href="#">Excepteur sint occaecat cupidatat</a></td><td class="status">Assigned and waiting</td><td class="done_ratio"><progress class="progress" max="100" value="0"></progress><p class="percent">0%</p></td><td class="spent_hours">1:00</td><td class="project"><a href="#">tempor.hu</a></td><td class="buttons"><a class="icon-only icon-actions" href="#">⋯</a></td></tr></tbody></table></div>
+        </div>
+        <div class="mypage-box"><h3>Activity</h3>
+          <div id="activity">
+  <h3>2026-11-06</h3>
+  <dl>
+    <dt class="issue-edit"><img class="gravatar avatar" width="36" height="36" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'><rect width='36' height='36' rx='18' fill='%23b9b4d4'/><text x='18' y='23' font-size='13' text-anchor='middle' fill='white' font-family='sans-serif'>LI</text></svg>"><span class="time">12:32</span> Lorem Ipsum Ltd. – <a class="issue" href="#">Feature #122 (In progress): Lorem ipsum dolor sit amet</a></dt>
+    <dd><span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span><span class="author"><a href="#">Lorem Ipsum</a></span></dd>
+    <dt class="issue-edit"><img class="gravatar avatar" width="36" height="36" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'><rect width='36' height='36' rx='18' fill='%23b9b4d4'/><text x='18' y='23' font-size='13' text-anchor='middle' fill='white' font-family='sans-serif'>LI</text></svg>"><span class="time">12:27</span> Lorem Ipsum Ltd. – <a class="issue" href="#">Feature #119 (Billed): Nulla pariatur est laborum</a></dt>
+    <dd><span class="author"><a href="#">Lorem Ipsum</a></span></dd>
+  </dl>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div></div></div>
+<script>
+  // demo: open/close the Redmine .drdn dropdown
+  document.querySelector('.drdn-trigger').addEventListener('click', function () { this.parentNode.classList.toggle('expanded'); });
+</script>
+<script>
+  // demo: Redmine context menu selection – plain click = only this row, Ctrl/Cmd/Shift = several rows
+  var rows = document.querySelectorAll('table.list tbody tr');
+  rows.forEach(function (tr) {
+    tr.addEventListener('click', function (e) {
+      if (e.target.closest('a, button')) return;
+      var multi = e.ctrlKey || e.metaKey || e.shiftKey;
+      var only = tr.classList.contains('context-menu-selection') &&
+        document.querySelectorAll('table.list tbody tr.context-menu-selection').length === 1;
+      if (!multi) rows.forEach(function (r) { r.classList.remove('context-menu-selection'); });
+      if (multi) tr.classList.toggle('context-menu-selection');
+      else if (!only) tr.classList.add('context-menu-selection');
+    });
+  });
+</script>
+<script>
+  // open/close the account menu (demo; live this is Redmine's own dropdown controller)
+  (function () {
+    var acc = document.querySelector('#account.dropdown');
+    var box = acc.querySelector('.dropdown-content');
+    acc.querySelector('.dropdown-trigger').addEventListener('click', function (e) { e.preventDefault(); box.classList.toggle('hidden'); });
+    document.addEventListener('click', function (e) { if (!acc.contains(e.target)) box.classList.add('hidden'); });
+  })();
+</script>
+</body>
+</html>

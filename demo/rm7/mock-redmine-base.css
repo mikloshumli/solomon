@@ -1,0 +1,55 @@
+/* For the demo pages: a simple copy of the most important layout rules of Redmine's core CSS.
+   The demo pages load the theme's real CSS and JS with Redmine's markup; this file only supplies
+   what the @import-ed core application.css provides live (font, columns, floats). */
+html, body { margin: 0; padding: 0; }
+body { font-family: "Noto Sans", Inter, -apple-system, "Segoe UI", system-ui, sans-serif; font-size: 14px; line-height: 1.5; color: #333; }
+a { text-decoration: none; }
+img { border: 0; }
+#main { display: flow-root; }
+#content { float: left; width: 74%; box-sizing: border-box; }
+#sidebar { float: right; width: 24%; box-sizing: border-box; font-size: .9em; }
+#main.nosidebar #content { float: none; width: auto; }
+nav.top-menu { display: flex; justify-content: space-between; align-items: center; }
+.top-menu__links ul { display: flex; margin: 0; padding: 0; list-style: none; }
+.profile-menu { display: flex; align-items: center; }
+.dropdown { position: relative; display: flex; align-items: center; }
+.dropdown-trigger { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.dropdown-content { position: absolute; top: 100%; right: 0; z-index: 1000; min-width: 160px; }
+.dropdown-content ul { margin: 0; padding: 0; list-style: none; }
+.hidden { display: none; }
+svg.icon-svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
+svg.icon-svg.s14 { width: 14px; height: 14px; }
+.avatar { display: inline-flex; flex-shrink: 0; vertical-align: middle; }
+span[role="img"].avatar { align-items: center; justify-content: center; font-size: 9.6px; }
+.avatar.s22 { width: 22px; height: 22px; }
+div.issue .avatar { float: left; margin: 0 12px 6px 0; }
+div#sticky-issue-header { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; align-items: center; }
+div#sticky-issue-header.is-visible { display: flex; }
+div#sticky-issue-header .issue-heading { flex-shrink: 0; margin-right: 6px; white-space: nowrap; }
+div#sticky-issue-header .subject { flex-grow: 1; overflow: hidden; font-weight: bold; text-overflow: ellipsis; white-space: nowrap; }
+div.issue.details .reaction { float: right; clear: right; margin: .5em 0 0 10px; font-size: .9em; }
+.reaction-button .icon-label { margin-left: 3px; font-weight: bold; }
+.journals h4.journal-header { display: flex; align-items: center; justify-content: space-between; }
+.journals .journal-meta, .journals .journal-actions { display: inline-flex; }
+div.thumbnail { display: inline-block; }
+div.thumbnail img { margin: 3px; vertical-align: middle; }
+#main-menu ul { margin: 0; padding: 0; }
+#main-menu li { float: left; list-style: none; }
+#quick-search { float: right; }
+.contextual { float: right; font-size: .9em; white-space: nowrap; }
+.splitcontent { display: flow-root; }
+.splitcontentleft { float: left; width: 49%; }
+.splitcontentright { float: right; width: 49%; }
+.attribute { display: flex; padding: 3px 0; }
+.attribute .label { width: 35%; flex: none; font-weight: bold; }
+.attribute .value { flex: 1; }
+div.issue .subject h3 { margin: 0; }
+div.issue img.gravatar { float: left; margin: 0 8px 0 0; }
+div.issue p.author { margin: 0 0 12px; }
+div.tabs { overflow: hidden; }
+h2, h3, h4 { margin-top: 0; }
+hr { margin: 12px 0; }
+.drdn { position: relative; display: inline-block; }
+.drdn-content { display: none; }
+.drdn.expanded .drdn-content { display: block; }
+.drdn-items a { display: block; }

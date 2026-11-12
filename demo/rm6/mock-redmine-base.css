@@ -11,6 +11,8 @@ img { border: 0; }
 #main.nosidebar #content { float: none; width: auto; }
 #top-menu ul { margin: 0; padding: 0; }
 #top-menu li { float: left; list-style: none; }
+#header h1 { padding: 2px 10px 1px 0; line-height: normal; }
+#main-menu li a { font-size: .93em; }
 #main-menu ul { margin: 0; padding: 0; }
 #main-menu li { float: left; list-style: none; }
 #quick-search { float: right; }
