@@ -4,9 +4,9 @@ Solomon is a clean, modern theme for **Redmine 6** and **Redmine 7**: a soft pur
 colored status/priority pills, a restyled login page, issue details, calendar and sidebar –
 and **10 color variants** you can switch from a gear icon on the right edge of every page.
 
-Website: **https://solomon.onlinemegjelenes.com**
+Website: **https://www.redmine-solomon.onlinemegjelenes.com**
 
-Version: **1.0.1** · License: **GPL-2.0-or-later** (see `LICENSE`)
+Version: **1.0.2** · License: **GPL-2.0-or-later** (see `LICENSE`)
 
 ## Features
 

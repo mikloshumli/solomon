@@ -1,0 +1,62 @@
+name: Release
+
+# Every release tag (vX.Y.Z) pushed to this repository becomes a GitHub Release
+# with the theme builds attached as zip files and the notes taken from CHANGELOG.md.
+# You can also run it by hand (Actions -> Release -> Run workflow) for a tag that has no release yet.
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to create the release for (for example v1.0.0)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Check out the tagged version
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref_name }}
+
+      - name: Build the zip files
+        run: |
+          VERSION="${TAG#v}"
+          mkdir dist
+          zip -qr "dist/solomonRM6-${VERSION}.zip" solomonRM6
+          zip -qr "dist/solomonRM7-${VERSION}.zip" solomonRM7
+          zip -qr "dist/solomon-demo-${VERSION}.zip" demo
+          ls -l dist
+
+      - name: Collect the release notes
+        run: |
+          VERSION="${TAG#v}"
+          awk -v v="$VERSION" '
+            $0 == "## " v {on=1; next}
+            on && /^## / {exit}
+            on {print}' CHANGELOG.md | sed '/./,$!d' > notes.md
+          if [ ! -s notes.md ]; then echo "Solomon ${TAG}" > notes.md; fi
+          {
+            echo
+            echo "**Which file do I need?** \`solomonRM6\` for Redmine 6.x, \`solomonRM7\` for Redmine 7.x."
+            echo "Unzip it into the \`themes/\` folder of your Redmine, precompile the assets and select the theme in Administration > Settings > Display."
+          } >> notes.md
+
+      - name: Create or update the release
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/* --clobber
+            gh release edit "$TAG" --title "Solomon ${TAG}" --notes-file notes.md
+          else
+            gh release create "$TAG" dist/* --title "Solomon ${TAG}" --notes-file notes.md --verify-tag
+          fi
