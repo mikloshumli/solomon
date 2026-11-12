@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3
+
+- The release workflow now also starts from the release commit and can be run by hand, so a GitHub Release (with the zip files and these notes) is created for every version.
+- Fixed the author of release commits: an unrelated "noreply" account no longer shows up in the contributors list.
+
 ## 1.0.2
 
 - Every release now also becomes a GitHub Release, with ready-made zip files attached (`solomonRM6`, `solomonRM7` and the demo pages) and these notes as its description.

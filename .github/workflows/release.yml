@@ -1,17 +1,23 @@
 name: Release
 
-# Every release tag (vX.Y.Z) pushed to this repository becomes a GitHub Release
-# with the theme builds attached as zip files and the notes taken from CHANGELOG.md.
-# You can also run it by hand (Actions -> Release -> Run workflow) for a tag that has no release yet.
+# Every release (a vX.Y.Z tag) becomes a GitHub Release with the theme builds attached as zip files
+# and the notes taken from CHANGELOG.md. The workflow starts in three ways, so a single missed event
+# cannot skip a release:
+#   1. a vX.Y.Z tag is pushed,
+#   2. the release commit is pushed to main (the workflow then looks for the vX.Y.Z tag on that commit),
+#   3. by hand: Actions -> Release -> Run workflow, with the tag name (for a tag that has no release yet).
+# Running it more than once for the same tag is safe: it updates the existing release.
 
 on:
   push:
     tags:
       - 'v*'
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Existing tag to create the release for (for example v1.0.0)'
+        description: 'Existing tag to create the release for (for example v1.0.2)'
         required: true
 
 permissions:
@@ -20,16 +26,42 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    # one release job at a time, so two triggers for the same tag never race
+    concurrency:
+      group: release
+      cancel-in-progress: false
     env:
-      TAG: ${{ github.event.inputs.tag || github.ref_name }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      INPUT_TAG: ${{ github.event.inputs.tag }}
     steps:
       - name: Check out the tagged version
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.tag || github.ref_name }}
+          # a manual run checks out the given tag; a tag or branch push uses the pushed ref
+          ref: ${{ github.event.inputs.tag }}
+          fetch-depth: 0
+
+      - name: Find the release tag
+        id: tag
+        run: |
+          if [ -n "$INPUT_TAG" ]; then
+            TAG="$INPUT_TAG"
+          elif [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            TAG="$GITHUB_REF_NAME"
+          else
+            TAG="$(git tag --points-at HEAD | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1 || true)"
+          fi
+          if [ -z "$TAG" ]; then
+            echo "No release tag on this commit, nothing to do."
+          else
+            echo "Release tag: $TAG"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 
       - name: Build the zip files
+        if: steps.tag.outputs.tag != ''
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
         run: |
           VERSION="${TAG#v}"
           mkdir dist
@@ -39,6 +71,9 @@ jobs:
           ls -l dist
 
       - name: Collect the release notes
+        if: steps.tag.outputs.tag != ''
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
         run: |
           VERSION="${TAG#v}"
           awk -v v="$VERSION" '
@@ -53,6 +88,9 @@ jobs:
           } >> notes.md
 
       - name: Create or update the release
+        if: steps.tag.outputs.tag != ''
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
         run: |
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" dist/* --clobber

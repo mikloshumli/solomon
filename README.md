@@ -6,7 +6,7 @@ and **10 color variants** you can switch from a gear icon on the right edge of e
 
 Website: **https://www.redmine-solomon.onlinemegjelenes.com**
 
-Version: **1.0.2** · License: **GPL-2.0-or-later** (see `LICENSE`)
+Version: **1.0.3** · License: **GPL-2.0-or-later** (see `LICENSE`)
 
 ## Features
 
