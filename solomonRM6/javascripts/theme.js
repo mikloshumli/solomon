@@ -1,4 +1,4 @@
-/* Solomon v1.0.3 – Redmine 6 theme · GPL-2.0-or-later */
+/* Solomon v1.0.4 – Redmine 6 theme · GPL-2.0-or-later */
 /* Theme script: color picker (gear + aside), pills, badges and login animations. */
 (function () {
   // Language: from the Redmine <html lang=".."> attribute (hu = Hungarian, anything else = English)
@@ -194,7 +194,7 @@
     window.addEventListener('mousemove', function (e) {
       var x = e.clientX / window.innerWidth - 0.5;
       var y = e.clientY / window.innerHeight - 0.5;
-      card.style.transform = 'perspective(800px) translate3d(' + (x * 24) + 'px,' + (y * 24) + 'px,0) rotateY(' + (x * 18) + 'deg) rotateX(' + (-y * 18) + 'deg)';
+      card.style.transform = 'perspective(1000px) translate3d(' + (x * 12) + 'px,' + (y * 12) + 'px,0) rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg)';
     });
     document.addEventListener('mouseleave', function () { card.style.transform = ''; });
   }

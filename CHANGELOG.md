@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.4
+
+- Login page: removed the "No account yet?" line under the sign-in button.
+- Flash messages (for example "Your session has expired"): the icon no longer sticks out of the box, on the login page and on every other page.
+- Login page: the 3D tilt of the card is gentler, and the tilted card is no longer cut off at its edges.
+- Login page: no more white strip under the background when the page is as tall as the window.
+- Orange color theme: the sign-in button is darker and easier on the eyes.
+
 ## 1.0.3
 
 - The release workflow now also starts from the release commit and can be run by hand, so a GitHub Release (with the zip files and these notes) is created for every version.

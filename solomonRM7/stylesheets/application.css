@@ -1,4 +1,4 @@
-/* Solomon v1.0.3 – Redmine 7 theme · GPL-2.0-or-later */
+/* Solomon v1.0.4 – Redmine 7 theme · GPL-2.0-or-later */
 /* Redmine - project management software
  * Copyright (C) 2006-  Jean-Philippe Lang
  *
@@ -551,6 +551,7 @@ body.controller-account.action-login #main {
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
+  box-sizing: border-box;
 }
 body.controller-account.action-login #main #content,
 body.controller-account.action-login #main.nosidebar #content {
@@ -561,13 +562,14 @@ body.controller-account.action-login #main.nosidebar #content {
   width: 100%;
   max-width: 420px;
   float: none;
+  overflow: visible; /* the base #content scrolls on overflow, which would clip the tilted card */
 }
 
 /* Error message (wrong password) */
 body.controller-account.action-login #flash_error,
 body.controller-account.action-login #flash_notice {
   margin: 0 0 16px;
-  padding: 12px 16px;
+  padding: 12px 16px 12px 44px;
   border: 1px solid var(--lg-glass-b);
   border-radius: 14px;
   background: rgba(255, 255, 255, .18);
@@ -575,6 +577,8 @@ body.controller-account.action-login #flash_notice {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
+
+body.controller-account.action-login div.flash svg.icon-svg { stroke: #fff; }
 
 /* The card */
 body.controller-account.action-login #login-form {
@@ -704,14 +708,14 @@ body.controller-account.action-login #login-form input[type="submit"] {
   /* the shine sweep is a background layer (an input cannot have ::after) */
   background:
     linear-gradient(100deg, transparent 42%, rgba(255, 255, 255, .45) 50%, transparent 58%) 100% 0 / 300% 100% no-repeat,
-    linear-gradient(110deg, var(--om-c1), var(--om-accent));
-  box-shadow: 0 12px 28px color-mix(in srgb, var(--om-c1) 45%, transparent);
+    linear-gradient(110deg, var(--lg-btn-a, var(--om-c1)), var(--lg-btn-b, var(--om-accent)));
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--lg-btn-a, var(--om-c1)) 45%, transparent);
   transition: transform .2s, box-shadow .2s, background-position .7s;
 }
 body.controller-account.action-login #login-form input[type="submit"]:hover {
   background-position: 0 0, 0 0;
   transform: translateY(-2px);
-  box-shadow: 0 18px 36px color-mix(in srgb, var(--om-c1) 55%, transparent);
+  box-shadow: 0 18px 36px color-mix(in srgb, var(--lg-btn-a, var(--om-c1)) 55%, transparent);
 }
 body.controller-account.action-login #login-form input[type="submit"]:active {
   transform: translateY(0) scale(.99);
@@ -723,16 +727,6 @@ body.controller-account.action-login #login-form input[type="submit"].om-loading
   animation: lg-pulse 1s ease-in-out infinite;
 }
 @keyframes lg-pulse { 50% { opacity: .65; } }
-
-/* Footer text */
-body.controller-account.action-login #login-form form::after {
-  content: "No account yet? Ask your administrator.";
-  display: block;
-  text-align: center;
-  margin-top: 28px;
-  font-size: .9rem;
-  color: var(--lg-muted);
-}
 
 @media (max-width: 480px) {
   body.controller-account.action-login #login-form { padding: 32px 22px 28px; }
@@ -1001,7 +995,7 @@ p.nodata, .nodata {
 
 #flash_notice, #flash_error, #flash_warning, div.flash {
   margin: 0 0 18px;
-  padding: 14px 18px;
+  padding: 14px 18px 14px 44px;
   border: 0;
   border-left: 4px solid var(--om-c1);
   border-radius: 12px;
@@ -1012,6 +1006,7 @@ p.nodata, .nodata {
 #flash_notice, div.flash.notice  { border-left-color: #1b9a5a; background: #e8f7ee; color: #176b41; }
 #flash_error,  div.flash.error   { border-left-color: #e5484d; background: #fdecec; color: #a31d22; }
 #flash_warning, div.flash.warning { border-left-color: #f08a24; background: #fdf0e1; color: #8a4a06; }
+div.flash svg.icon-svg { stroke: currentColor; vertical-align: -3px; }
 
 
 /* ---------- Sidebar and administration menu ---------- */
@@ -1056,6 +1051,8 @@ p.nodata, .nodata {
 :root[data-om-theme="indigo"] { --om-c1: #5a4fe0; --om-c2: #2a2478; --om-accent: #a5b4fc; }
 :root[data-om-theme="arany"] { --om-c1: #e09b0a; --om-c2: #a8500a; --om-accent: #fde68a; }
 :root[data-om-theme="grafit"] { --om-c1: #64748b; --om-c2: #1e293b; --om-accent: #cbd5e1; }
+/* Orange: the default login button (c1 -> accent) is too pale and glaring on the orange card; use a deeper one */
+:root[data-om-theme="narancs"] { --lg-btn-a: color-mix(in srgb, var(--om-c2) 78%, #000); --lg-btn-b: var(--om-c2); }
 
 /* ---------- Theme picker: gear icon on the right + slide-in aside ---------- */
 .om-gear {
@@ -1379,4 +1376,3 @@ div.mypage-box #activity h3, #activity h3 {
 /* ---------- Language strings (labels that come from CSS; they follow the Redmine <html lang=".."> attribute) ---------- */
 html:lang(hu) body.controller-account.action-login #login-form::before { content: "Üdv újra!"; }
 html:lang(hu) body.controller-account.action-login #login-form form::before { content: "Jelentkezz be a fiókodba"; }
-html:lang(hu) body.controller-account.action-login #login-form form::after { content: "Nincs még fiókod? Kérj hozzáférést a rendszergazdától."; }
